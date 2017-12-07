@@ -3,7 +3,11 @@
     <string name="email_placeholder_text">Email</string>
     <string name="password_placeholder_text">Password</string>
     <string name="password_repeat_placeholder_text">Repeat password</string>
+    <string name="password_original_placeholder">Original Password</string>
+    <string name="password_new_placeholder">New Password</string>
+    <string name="password_new_repeat_placeholder">Repeat New Password</string>
     <string name="password_change_button">Change Password</string>
+    <string name="submit_button">Submit</string>
     <string name="sign_in_google_button">Sign in with Google</string>
     <string name="sign_up_button">Sign up</string>
     <string name="sign_in_button">Sign in</string>
@@ -16,5 +20,6 @@
     <string name="drawer_setting">Setting</string>
     <string name="drawer_user_profile">User Profile</string>
     <string name="drawer_sign_out">Sign Out</string>
-
+    <string name="web_client_id">367082010316-kbbl0f8suppn2frano2r7288vf86dk3m.apps.googleusercontent.com</string>
+    
 </resources>

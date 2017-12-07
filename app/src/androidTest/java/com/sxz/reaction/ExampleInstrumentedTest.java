@@ -4,8 +4,14 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.sxz.reaction.database.ReactionLab;
+import com.sxz.reaction.model.Record;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -17,10 +23,26 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
     @Test
-    public void useAppContext() throws Exception {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getTargetContext();
+    public void DatabaseRecordAdd() throws Exception {
 
-        assertEquals("com.sxz.reaction", appContext.getPackageName());
+        Context appContext = InstrumentationRegistry.getTargetContext();
+        ReactionLab lab = ReactionLab.get(appContext);
+
+        Record newRecord = new Record();
+        newRecord.setTime(new Float(10.3));
+        newRecord.setDate(new Date());
+        newRecord.setUserName("charlesxsh");
+
+        lab.addRecord(newRecord);
+
+        List<Record> records = lab.getRecords();
+
+        assertEquals(records.size(), 1);
+
+        Record testRecord = records.get(0);
+
+        assertEquals(newRecord.getDate(), testRecord.getDate());
+        assertEquals(newRecord.getTime(), testRecord.getTime());
+        assertEquals(newRecord.getUserName(), testRecord.getUserName());
     }
 }
