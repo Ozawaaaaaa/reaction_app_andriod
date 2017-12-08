@@ -151,6 +151,12 @@ public class SignInFragment extends Fragment {
         });
 
 
+        mSignInWithAnonymousButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signInWithAnonymous();
+            }
+        });
 
         return v;
     }
@@ -181,14 +187,13 @@ public class SignInFragment extends Fragment {
 
 
     private void signInWithEmail(String email, String password){
-        final Activity Self = getActivity();
-
         mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(Self, this.onAuthResult);
+                .addOnCompleteListener(getActivity(), this.onAuthResult);
     }
 
     private void signInWithAnonymous(){
-        mAuth.signInAnonymously().addOnCompleteListener(getActivity(), this.onAuthResult);
+        mAuth.signInAnonymously()
+                .addOnCompleteListener(getActivity(), this.onAuthResult);
     }
 
 

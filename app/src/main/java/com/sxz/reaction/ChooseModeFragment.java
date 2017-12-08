@@ -28,28 +28,16 @@ public class ChooseModeFragment extends Fragment {
         mChooseColorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Fragment fragment = new ColorModeFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-
+                SingleFragmentActivity activity = (SingleFragmentActivity)getActivity();
+                activity.switchFragment(new ColorModeFragment(), true);
             }
         });
 
         mChooseSoundButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Fragment fragment = new SoundModeFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-
+                SingleFragmentActivity activity = (SingleFragmentActivity)getActivity();
+                activity.switchFragment(new SoundModeFragment(), true);
             }
         });
 

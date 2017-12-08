@@ -111,8 +111,7 @@ OnUserSignInListener {
             switchFragment(new SignInFragment(), false);
         }else {
             mDrawerToggle.setDrawerIndicatorEnabled(true);
-            //TODO: switch to game
-            //switchFragment(null, false);
+            switchFragment(new ChooseModeFragment(), false);
         }
         updateDrawerUI(user);
     }
@@ -120,8 +119,6 @@ OnUserSignInListener {
     private void updateDrawerUI(FirebaseUser user){
         if(user == null){
             mUserDisplayNameText.setText("");
-            //TODO: set a default image
-
         }else {
             Uri imageUri = user.getPhotoUrl();
             String displayName = user.getDisplayName();
