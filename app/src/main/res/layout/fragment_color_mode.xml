@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/color_mode_background"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#E0E0E0" >
+    android:layout_height="match_parent" >
+    <!--android:background="#E0E0E0" >-->
 
     <Button
         android:id="@+id/start_color_change"
