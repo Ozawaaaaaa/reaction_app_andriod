@@ -1,22 +1,14 @@
-package com.sxz.reaction;
+package com.sxz.reaction.activity;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,11 +16,14 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
+import com.sxz.reaction.ChooseModeFragment;
+import com.sxz.reaction.R;
+import com.sxz.reaction.fragment.SignInFragment;
 
 
 public class MainActivity extends SingleFragmentActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-OnUserSignInListener {
+        SignInFragment.OnUserSignInListener {
     private String TAG = MainActivity.class.getSimpleName();
     private FirebaseAuth mAuth;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -86,6 +81,10 @@ OnUserSignInListener {
                 break;
             case R.id.drawer_sign_out:
                 signOut();
+                break;
+            case R.id.drawer_user_history:
+                startHistoryActivity();
+                break;
             default:
                 break;
         }
@@ -107,9 +106,11 @@ OnUserSignInListener {
 
     private void updateUI(FirebaseUser user){
         if (user == null){
+            getSupportActionBar().hide();
             mDrawerToggle.setDrawerIndicatorEnabled(false);
             switchFragment(new SignInFragment(), false);
         }else {
+            getSupportActionBar().show();
             mDrawerToggle.setDrawerIndicatorEnabled(true);
             switchFragment(new ChooseModeFragment(), false);
         }
@@ -133,6 +134,10 @@ OnUserSignInListener {
         }
     }
 
+    private void startHistoryActivity(){
+        Intent intent = new Intent(this, HistoryActivity.class);
+        startActivity(intent);
+    }
     private void signOut(){
         mAuth.signOut();
         updateUI(null);

@@ -31,9 +31,9 @@ public class ReactionLab {
         mDatabase = new ReactionBaseHelper(mContext).getWritableDatabase();
     }
 
-    public List<Record> getRecords(){
+    public List<Record> getRecordsByUserID(String userID){
         List<Record> records = new ArrayList<>();
-        RecordCursorWrapper cursor = queryRecords(null, null);
+        RecordCursorWrapper cursor = queryRecords(ReactionDbSchema.RecordTable.Cols.USERID + "=?", new String[]{ userID });
         while(cursor.moveToNext()){
             records.add( cursor.getRecord() );
         }
@@ -53,7 +53,7 @@ public class ReactionLab {
         ContentValues values = new ContentValues();
         values.put(ReactionDbSchema.RecordTable.Cols.DATE, record.getDate().getTime());
         values.put(ReactionDbSchema.RecordTable.Cols.Time, record.getTime());
-        values.put(ReactionDbSchema.RecordTable.Cols.USERNAME, record.getUserName());
+        values.put(ReactionDbSchema.RecordTable.Cols.USERID, record.getUserID());
         return values;
     }
 }

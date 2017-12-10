@@ -9,7 +9,7 @@
     android:layout_marginTop="32dp"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="com.sxz.reaction.SignUpFragment">
+    tools:context="com.sxz.reaction.fragment.SignUpFragment">
 
     <EditText
         android:id="@+id/sign_up_email_edit"

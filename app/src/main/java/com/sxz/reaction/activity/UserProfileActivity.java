@@ -1,12 +1,11 @@
-package com.sxz.reaction;
+package com.sxz.reaction.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
+
+import com.sxz.reaction.R;
+import com.sxz.reaction.fragment.UserProfileFragment;
 
 public class UserProfileActivity extends SingleFragmentActivity {
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

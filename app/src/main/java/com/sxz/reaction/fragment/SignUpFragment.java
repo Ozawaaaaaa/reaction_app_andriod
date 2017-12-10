@@ -1,4 +1,4 @@
-package com.sxz.reaction;
+package com.sxz.reaction.fragment;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.sxz.reaction.R;
 
 public class SignUpFragment extends Fragment {
 
@@ -27,13 +28,13 @@ public class SignUpFragment extends Fragment {
     private EditText mPasswordRepeatEditText;
     private Button mSignUpButton;
     private FirebaseAuth mAuth;
-    private OnUserSignInListener userSignInListener;
+    private SignInFragment.OnUserSignInListener userSignInListener;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         try {
-            userSignInListener = (OnUserSignInListener) context;
+            userSignInListener = (SignInFragment.OnUserSignInListener) context;
         } catch (ClassCastException castException) {
             Log.e(TAG, "The activity does not implement the listener");
         }

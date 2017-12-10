@@ -1,13 +1,12 @@
-package com.sxz.reaction;
+package com.sxz.reaction.fragment;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +27,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.romainpiel.shimmer.Shimmer;
+import com.romainpiel.shimmer.ShimmerTextView;
+import com.sxz.reaction.R;
+import com.sxz.reaction.activity.SingleFragmentActivity;
 
 public class SignInFragment extends Fragment {
 
@@ -36,7 +39,9 @@ public class SignInFragment extends Fragment {
 
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
+    private Shimmer mShimmer;
 
+    private ShimmerTextView mTitleShimmerTextView;
     private Button mSignUpButton;
     private Button mSignInWithEmailButton;
     private Button mSignInWithGoogleButton;
@@ -109,8 +114,10 @@ public class SignInFragment extends Fragment {
         mSignInWithAnonymousButton = (Button) v.findViewById(R.id.sign_in_anon_button);
         mEmailEditText = (EditText) v.findViewById(R.id.sign_in_email_edit);
         mPasswordEditText = (EditText) v.findViewById(R.id.sign_in_password_edit);
+        mTitleShimmerTextView = (ShimmerTextView) v.findViewById(R.id.sign_in_text_title);
 
-
+        mShimmer = new Shimmer();
+        mShimmer.start(mTitleShimmerTextView);
         // OnClick for sign up button
         mSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,5 +216,9 @@ public class SignInFragment extends Fragment {
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(getActivity(), this.onAuthResult);
+    }
+
+    public interface OnUserSignInListener {
+        public void onUserSignIn(FirebaseUser user);
     }
 }

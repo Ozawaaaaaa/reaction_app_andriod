@@ -19,11 +19,11 @@ public class RecordCursorWrapper extends CursorWrapper {
 
     public Record getRecord(){
         Record record = new Record();
-        String userName = getString(getColumnIndex(ReactionDbSchema.RecordTable.Cols.USERNAME));
+        String userID = getString(getColumnIndex(ReactionDbSchema.RecordTable.Cols.USERID));
         Long date = getLong(getColumnIndex(ReactionDbSchema.RecordTable.Cols.DATE));
         Float time = getFloat(getColumnIndex(ReactionDbSchema.RecordTable.Cols.Time));
 
-        record.setUserName(userName);
+        record.setUserID(userID);
         record.setDate(new Date(date));
         record.setTime(time);
         return record;

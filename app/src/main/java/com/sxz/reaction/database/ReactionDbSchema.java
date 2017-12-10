@@ -9,7 +9,7 @@ public class ReactionDbSchema {
         public static final String NAME = "records";
 
         public static final class Cols {
-            public static final String USERNAME = "username";
+            public static final String USERID = "user_id";
             public static final String DATE = "date";
             public static final String Time = "time";
         }

@@ -6,13 +6,14 @@ import java.util.Date;
  * Created by Shihao on 12/6/17.
  */
 
+
 public class Record {
-    public String getUserName() {
-        return userName;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public Float getTime() {
@@ -31,7 +32,7 @@ public class Record {
         this.date = date;
     }
 
-    private String userName;
+    private String userID;
     private Float time;
     private Date date;
 }

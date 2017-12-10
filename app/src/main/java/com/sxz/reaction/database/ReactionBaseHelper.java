@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class ReactionBaseHelper extends SQLiteOpenHelper {
-    private static final int VERSION = 1;
+    private static final int VERSION = 2;
     private static final String DATABASE_NAME = "reactionBase.db";
 
     public ReactionBaseHelper(Context context) {
@@ -21,12 +21,13 @@ public class ReactionBaseHelper extends SQLiteOpenHelper {
             "_id integer primary key autoincrement, "+
                 ReactionDbSchema.RecordTable.Cols.DATE+", "+
                 ReactionDbSchema.RecordTable.Cols.Time+", "+
-                ReactionDbSchema.RecordTable.Cols.USERNAME+")"
+                ReactionDbSchema.RecordTable.Cols.USERID+")"
         );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + ReactionDbSchema.RecordTable.NAME);
+        onCreate(sqLiteDatabase);
     }
 }

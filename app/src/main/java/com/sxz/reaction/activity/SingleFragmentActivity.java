@@ -1,9 +1,11 @@
-package com.sxz.reaction;
+package com.sxz.reaction.activity;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+
+import com.sxz.reaction.R;
 
 /**
  * Created by Shihao on 12/3/17.

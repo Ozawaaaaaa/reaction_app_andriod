@@ -1,6 +1,5 @@
-package com.sxz.reaction;
+package com.sxz.reaction.fragment;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -33,6 +32,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+import com.sxz.reaction.R;
+import com.sxz.reaction.Utility;
+import com.sxz.reaction.activity.SingleFragmentActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
