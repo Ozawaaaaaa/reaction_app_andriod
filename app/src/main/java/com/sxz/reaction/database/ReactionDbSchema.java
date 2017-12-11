@@ -11,7 +11,8 @@ public class ReactionDbSchema {
         public static final class Cols {
             public static final String USERID = "user_id";
             public static final String DATE = "date";
-            public static final String Time = "time";
+            public static final String TIME = "time";
+            public static final String TYPE = "type";
         }
 
 

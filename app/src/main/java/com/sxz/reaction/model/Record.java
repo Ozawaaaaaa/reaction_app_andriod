@@ -8,6 +8,17 @@ import java.util.Date;
 
 
 public class Record {
+
+    public static class Type {
+        public static final int AUDITORY = 0;
+        public static final int VISUAL = 1;
+    }
+
+    private String userID;
+    private float time;
+    private Date date;
+    private int type;
+
     public String getUserID() {
         return userID;
     }
@@ -16,7 +27,7 @@ public class Record {
         this.userID = userID;
     }
 
-    public Float getTime() {
+    public float getTime() {
         return time;
     }
 
@@ -32,7 +43,12 @@ public class Record {
         this.date = date;
     }
 
-    private String userID;
-    private Float time;
-    private Date date;
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
 }

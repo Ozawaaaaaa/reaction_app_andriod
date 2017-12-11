@@ -31,12 +31,16 @@ public class ReactionLab {
         mDatabase = new ReactionBaseHelper(mContext).getWritableDatabase();
     }
 
-    public List<Record> getRecordsByUserID(String userID){
+    public List<Record> getRecordsBy(String userID, int type){
         List<Record> records = new ArrayList<>();
-        RecordCursorWrapper cursor = queryRecords(ReactionDbSchema.RecordTable.Cols.USERID + "=?", new String[]{ userID });
+        RecordCursorWrapper cursor = queryRecords(
+                ReactionDbSchema.RecordTable.Cols.USERID + "=? and "+
+                        ReactionDbSchema.RecordTable.Cols.TYPE + "= ?"
+                , new String[]{ userID, Integer.toString(type) });
         while(cursor.moveToNext()){
             records.add( cursor.getRecord() );
         }
+        cursor.close();
         return records;
     }
 
@@ -52,8 +56,13 @@ public class ReactionLab {
     private ContentValues getContentValues(Record record){
         ContentValues values = new ContentValues();
         values.put(ReactionDbSchema.RecordTable.Cols.DATE, record.getDate().getTime());
-        values.put(ReactionDbSchema.RecordTable.Cols.Time, record.getTime());
+        values.put(ReactionDbSchema.RecordTable.Cols.TIME, record.getTime());
         values.put(ReactionDbSchema.RecordTable.Cols.USERID, record.getUserID());
+        values.put(ReactionDbSchema.RecordTable.Cols.TYPE, record.getType());
         return values;
+    }
+
+    public void clearAll(){
+        mDatabase.execSQL("delete from "+ReactionDbSchema.RecordTable.NAME);
     }
 }

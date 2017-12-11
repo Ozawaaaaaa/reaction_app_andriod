@@ -7,6 +7,14 @@
     android:orientation="vertical"
     tools:context="com.sxz.reaction.fragment.HistoryFragment">
 
+    <com.romainpiel.shimmer.ShimmerTextView
+        android:id="@+id/history_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/app_name"
+        android:textSize="36sp" />
+
     <org.eazegraph.lib.charts.ValueLineChart xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/history_linechart"
         android:layout_width="match_parent"

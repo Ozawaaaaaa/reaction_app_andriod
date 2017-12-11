@@ -23,7 +23,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.UserProfileActivity" />
-        <activity android:name=".activity.HistoryActivity"></activity>
+        <activity android:name=".activity.HistoryActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>
