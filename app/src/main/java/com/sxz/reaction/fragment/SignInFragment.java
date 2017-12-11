@@ -32,6 +32,9 @@ import com.romainpiel.shimmer.ShimmerTextView;
 import com.sxz.reaction.R;
 import com.sxz.reaction.activity.SingleFragmentActivity;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class SignInFragment extends Fragment {
 
     private static final int RC_SIGN_IN = 1;
@@ -41,15 +44,28 @@ public class SignInFragment extends Fragment {
     private GoogleSignInClient mGoogleSignInClient;
     private Shimmer mShimmer;
 
-    private ShimmerTextView mTitleShimmerTextView;
-    private Button mSignUpButton;
-    private Button mSignInWithEmailButton;
-    private Button mSignInWithGoogleButton;
-    private Button mSignInWithAnonymousButton;
-    private EditText mEmailEditText;
-    private EditText mPasswordEditText;
-    private OnUserSignInListener userSignInListener;
+    @BindView(R.id.sign_in_text_title)
+    ShimmerTextView mTitleShimmerTextView;
 
+    @BindView(R.id.sign_in_sign_up_button)
+    Button mSignUpButton;
+
+    @BindView(R.id.sign_in_sign_in_button)
+    Button mSignInWithEmailButton;
+
+    @BindView(R.id.sign_in_google_button)
+    Button mSignInWithGoogleButton;
+
+    @BindView(R.id.sign_in_anon_button)
+    Button mSignInWithAnonymousButton;
+
+    @BindView(R.id.sign_in_email_edit)
+    EditText mEmailEditText;
+
+    @BindView(R.id.sign_in_password_edit)
+    EditText mPasswordEditText;
+
+    private OnUserSignInListener userSignInListener;
     private OnCompleteListener<AuthResult> onAuthResult;
 
     @Override
@@ -65,6 +81,7 @@ public class SignInFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         // Initialize auth result callback
 
         onAuthResult =  new OnCompleteListener<AuthResult>() {
@@ -108,14 +125,7 @@ public class SignInFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_sign_in, container, false);
-        mSignUpButton = (Button)v.findViewById(R.id.sign_in_sign_up_button);
-        mSignInWithEmailButton = (Button)v.findViewById(R.id.sign_in_sign_in_button);
-        mSignInWithGoogleButton = (Button) v.findViewById(R.id.sign_in_google_button);
-        mSignInWithAnonymousButton = (Button) v.findViewById(R.id.sign_in_anon_button);
-        mEmailEditText = (EditText) v.findViewById(R.id.sign_in_email_edit);
-        mPasswordEditText = (EditText) v.findViewById(R.id.sign_in_password_edit);
-        mTitleShimmerTextView = (ShimmerTextView) v.findViewById(R.id.sign_in_text_title);
-
+        ButterKnife.bind(this, v);
         mShimmer = new Shimmer();
         mShimmer.start(mTitleShimmerTextView);
         // OnClick for sign up button

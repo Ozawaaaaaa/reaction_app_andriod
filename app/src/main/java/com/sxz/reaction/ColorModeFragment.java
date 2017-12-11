@@ -16,6 +16,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.sxz.reaction.activity.SingleFragmentActivity;
+import com.sxz.reaction.fragment.ResultFragment;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -92,6 +95,8 @@ public class ColorModeFragment extends Fragment{
                     double time_difference = (end_time - start_time)/1e6;
                     Toast.makeText(getContext(), Double.toString(time_difference), Toast.LENGTH_SHORT).show();
 
+                    //Show Result Page
+                    ((SingleFragmentActivity)getActivity()).switchFragment(ResultFragment.newInstance((float)time_difference), false);
                     mStartColorChange.setVisibility(View.VISIBLE);
                     mQuit.setVisibility(View.VISIBLE);
 
@@ -122,5 +127,6 @@ public class ColorModeFragment extends Fragment{
 
         return view;
     }
+
 
 }
