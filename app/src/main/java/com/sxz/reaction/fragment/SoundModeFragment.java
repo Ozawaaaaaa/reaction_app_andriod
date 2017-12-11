@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.sxz.reaction.ChooseModeFragment;
 import com.sxz.reaction.R;
+import com.sxz.reaction.activity.SingleFragmentActivity;
 
 import java.util.Random;
 
@@ -78,12 +79,15 @@ public class SoundModeFragment extends Fragment {
 
                 } else { // if restart
 
-                    Fragment fragment = new SoundModeFragment();
-                    FragmentManager fragmentManager = getFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, fragment);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
+                    SingleFragmentActivity activity = (SingleFragmentActivity) getActivity();
+                    activity.switchFragment(new SoundModeFragment(), false);
+
+//                    Fragment fragment = new SoundModeFragment();
+//                    FragmentManager fragmentManager = getFragmentManager();
+//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                    fragmentTransaction.replace(R.id.fragment_container, fragment);
+//                    fragmentTransaction.addToBackStack(null);
+//                    fragmentTransaction.commit();
                 }
             }
         });
@@ -119,13 +123,15 @@ public class SoundModeFragment extends Fragment {
                     sound_low.stop();
                     sound_high.stop();
 
-                    Fragment fragment = new SoundModeFragment();
-                    FragmentManager fragmentManager = getFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, fragment);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
+                    SingleFragmentActivity activity = (SingleFragmentActivity) getActivity();
+                    activity.switchFragment(new SoundModeFragment(), false);
 
+//                    Fragment fragment = new SoundModeFragment();
+//                    FragmentManager fragmentManager = getFragmentManager();
+//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                    fragmentTransaction.replace(R.id.fragment_container, fragment);
+//                    fragmentTransaction.addToBackStack(null);
+//                    fragmentTransaction.commit();
 
                 } else {} // current nothing playing
             }
@@ -134,15 +140,21 @@ public class SoundModeFragment extends Fragment {
         mQuit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment fragment = new ChooseModeFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
 
                 sound_high.stop();
                 sound_low.stop();
+
+                SingleFragmentActivity activity = (SingleFragmentActivity) getActivity();
+                activity.switchFragment(new ChooseModeFragment(), false);
+
+//                Fragment fragment = new ChooseModeFragment();
+//                FragmentManager fragmentManager = getFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.fragment_container, fragment);
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
+
+
             }
         });
 

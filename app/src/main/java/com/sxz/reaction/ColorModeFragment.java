@@ -76,12 +76,15 @@ public class ColorModeFragment extends Fragment{
 
                 } else {
 
-                    Fragment fragment = new ColorModeFragment();
-                    FragmentManager fragmentManager = getFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, fragment);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
+                    SingleFragmentActivity activity = (SingleFragmentActivity) getActivity();
+                    activity.switchFragment(new ColorModeFragment(), false);
+
+//                    Fragment fragment = new ColorModeFragment();
+//                    FragmentManager fragmentManager = getFragmentManager();
+//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                    fragmentTransaction.replace(R.id.fragment_container, fragment);
+//                    fragmentTransaction.addToBackStack(null);
+//                    fragmentTransaction.commit();
                 }
             }
         });
@@ -103,12 +106,15 @@ public class ColorModeFragment extends Fragment{
                 } else {
                     Toast.makeText(getContext(), "Color not changed yet", Toast.LENGTH_SHORT).show();
 
-                    Fragment fragment = new ColorModeFragment();
-                    FragmentManager fragmentManager = getFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, fragment);
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
+                    SingleFragmentActivity activity = (SingleFragmentActivity) getActivity();
+                    activity.switchFragment(new ColorModeFragment(), false);
+
+//                    Fragment fragment = new ColorModeFragment();
+//                    FragmentManager fragmentManager = getFragmentManager();
+//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                    fragmentTransaction.replace(R.id.fragment_container, fragment);
+//                    fragmentTransaction.addToBackStack(null);
+//                    fragmentTransaction.commit();
                 }
             }
         });
@@ -116,12 +122,16 @@ public class ColorModeFragment extends Fragment{
         mQuit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment fragment = new ChooseModeFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+
+                SingleFragmentActivity activity = (SingleFragmentActivity) getActivity();
+                activity.switchFragment(new ChooseModeFragment(), false);
+
+//                Fragment fragment = new ChooseModeFragment();
+//                FragmentManager fragmentManager = getFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.fragment_container, fragment);
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
             }
         });
 
