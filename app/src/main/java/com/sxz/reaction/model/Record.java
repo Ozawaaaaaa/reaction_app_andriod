@@ -1,5 +1,7 @@
 package com.sxz.reaction.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 /**
@@ -14,6 +16,7 @@ public class Record {
         public static final int VISUAL = 1;
     }
 
+    @SerializedName("uid")
     private String userID;
     private float time;
     private Date date;
